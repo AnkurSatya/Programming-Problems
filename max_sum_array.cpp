@@ -1,29 +1,16 @@
 int Solution::maxSubArray(const vector<int> &A) {
-    int i = 1;
-    int j;
-    int k;
-    int run_sum = A[0];//running sum
-    int max_sum = run_sum;
-    int upto_sum = run_sum;//sum upto index value k;
+    int j = 1;
+    int run_sum = A[0];
+    int max_sum = A[0];
     
-    for(j = 1; j<A.size(); j++)
+    while(j < A.size())
     {   
-        k = i;
-        run_sum = A[k-1];
-        while(k <= j)
-        {
-            if(run_sum + A[k] < A[k])
-            {
-                i = k;
-                run_sum = A[k];
-            }
-            else
-            {
-                run_sum += A[k];
-            }
-            k++;
-        }
-        if(run_sum > max_sum) max_sum = run_sum;
+        if(run_sum + A[j] <= A[j]) run_sum = A[j];
+        
+        else run_sum += A[j];    
+        
+        if(max_sum < run_sum) max_sum = run_sum;
+        j++;
     }
     return max_sum;
 }
