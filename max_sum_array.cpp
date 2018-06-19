@@ -14,7 +14,7 @@ int Solution::maxSubArray(const vector<int> &A) {
         {
             if(run_sum + A[k] < A[k])
             {
-                i++;
+                i = k;
                 run_sum = A[k];
             }
             else
